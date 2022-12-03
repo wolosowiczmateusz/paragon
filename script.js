@@ -4,6 +4,7 @@ const addForm = document.getElementById("add-form")
 const deleteForm = document.getElementById("delete-form")
 const editForm = document.getElementById("edit-form")
 
+//tworzy id dla przedmiotu i je returnuje
 function getId(){
   let finalId = -1
   let tmpProducts = [...products]
@@ -51,7 +52,7 @@ class Product{
   }
 }
 
-
+//inicjacja tabeli - czysci calą tabele a następnie tworzy sam header tabeli
 function initTable(){
   while (table.firstChild) {
     table.removeChild(table.lastChild)
@@ -75,11 +76,14 @@ function initTable(){
   table.append(tr)
 }
 
+
+//dodanie produktu do listy
 function addProduct(name,count,price){
   let p = new Product(getId(),name,count,price)
   products.push(p)
 }
 
+//przejscie całej listy produktów i dodanie kazdego produktu do tabeli
 function showProducts(){
   for(let product of products){
     let tr2 = document.createElement("tr")
@@ -104,7 +108,7 @@ function showProducts(){
 
 let products = []
 
-
+// obsługa guzika dodaj produkt
 addForm.addEventListener(
   "submit",
   (event) =>{
@@ -120,7 +124,7 @@ addForm.addEventListener(
   false
 )
 
-
+// obsługa guzika usuń produkt
 deleteForm.addEventListener(
   "submit",
   (event) =>{
@@ -138,6 +142,7 @@ deleteForm.addEventListener(
   false
 )
 
+// obsługa guzika edytuj produkt
 editForm.addEventListener(
   "submit",
   (event) =>{
